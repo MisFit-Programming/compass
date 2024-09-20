@@ -2,18 +2,24 @@
 const compassContainer = document.querySelector('.compass-container');
 const shapeSelector = document.getElementById('shape-selector');
 const colorPicker = document.getElementById('color-picker');
+const sizeSlider = document.getElementById('size-slider');
+const sizeValue = document.getElementById('size-value');
 const positiveAdjInput = document.getElementById('positive-adj');
 const negativeAdjInput = document.getElementById('negative-adj');
 
-// Debugging: Log clicks to ensure they're being registered
-compassContainer.addEventListener('click', function (e) {
-    console.log(`Clicked at X: ${e.clientX}, Y: ${e.clientY}`);
+// Update size value text when slider is moved
+sizeSlider.addEventListener('input', function () {
+    sizeValue.textContent = sizeSlider.value;
 });
 
 // Shape creation function
-function createShape(x, y, shape, color, positiveAdj, negativeAdj) {
+function createShape(x, y, shape, color, size, positiveAdj, negativeAdj) {
     const shapeElement = document.createElement('div');
     shapeElement.classList.add('shape', shape);
+
+    // Set size
+    shapeElement.style.width = `${size}px`;
+    shapeElement.style.height = `${size}px`;
 
     // Set position
     shapeElement.style.left = `${x}px`;
@@ -28,6 +34,7 @@ function createShape(x, y, shape, color, positiveAdj, negativeAdj) {
     } else {
         shapeElement.textContent = shape.toUpperCase();
         shapeElement.style.color = color;
+        shapeElement.style.fontSize = `${size / 2}px`;  // Adjust font size for text-based shapes
     }
 
     // Tooltip for Positive and Negative Adj (on hover)
@@ -47,9 +54,10 @@ function createShape(x, y, shape, color, positiveAdj, negativeAdj) {
 compassContainer.addEventListener('click', function (e) {
     if (e.target !== compassContainer) return; // Prevent adding on existing shape
 
-    // Get the selected shape and color
+    // Get the selected shape, color, and size
     const selectedShape = shapeSelector.value;
     const selectedColor = colorPicker.value;
+    const selectedSize = sizeSlider.value;
     const positiveAdj = positiveAdjInput.value;
     const negativeAdj = negativeAdjInput.value;
 
@@ -58,8 +66,8 @@ compassContainer.addEventListener('click', function (e) {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    console.log(`Shape: ${selectedShape}, Color: ${selectedColor}, Positive Adj: ${positiveAdj}, Negative Adj: ${negativeAdj}`);
+    console.log(`Shape: ${selectedShape}, Color: ${selectedColor}, Size: ${selectedSize}px, Positive Adj: ${positiveAdj}, Negative Adj: ${negativeAdj}`);
 
     // Create the shape at the clicked position
-    createShape(x, y, selectedShape, selectedColor, positiveAdj, negativeAdj);
+    createShape(x, y, selectedShape, selectedColor, selectedSize, positiveAdj, negativeAdj);
 });
