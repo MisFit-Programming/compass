@@ -7,8 +7,35 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="controls">
+        <!-- Shape Selector -->
+        <label for="shape-selector">Choose a Shape:</label>
+        <select id="shape-selector">
+            <option value="circle">Circle</option>
+            <option value="vr">Vr</option>
+            <option value="vc">Vc</option>
+            <option value="ar">Ar</option>
+            <option value="ac">Ac</option>
+            <option value="kr">Kr</option>
+            <option value="kc">Kc</option>
+            <option value="ad">Ad</option>
+            <option value="plus">Plus Sign</option>
+        </select>
+
+        <!-- Color Picker -->
+        <label for="color-picker">Choose a Color:</label>
+        <input type="color" id="color-picker" value="#ff0000">
+
+        <!-- Positive and Negative Adj -->
+        <label for="positive-adj">Positive Adj:</label>
+        <input type="text" id="positive-adj" placeholder="Positive Adj">
+
+        <label for="negative-adj">Negative Adj:</label>
+        <input type="text" id="negative-adj" placeholder="Negative Adj">
+    </div>
+
     <div class="compass-container">
-        <img src="Compass.png" alt="Behavior Compass" class="compass-image">
+        <img src="behavior-compass.jpg" alt="Behavior Compass" class="compass-image">
     </div>
 
     <script src="script.js"></script>
