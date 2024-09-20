@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Website</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            text-align: center;
+        }
+        .clickable-word {
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #5b9bd5;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .clickable-word.selected {
+            background-color: #d9d9d9;
+            border-color: #000;
+        }
+        #central-display {
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px dashed #000;
+            width: 300px;
+            height: 100px;
+            font-size: 18px;
+        }
+        .textbox {
+            width: 300px;
+            height: 100px;
+            margin: 20px;
+            border: 1px solid #5b9bd5;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interactive Website</h1>
+    
+    <!-- Clickable Words -->
+    <div id="clickable-area">
+        <div class="clickable-word" onclick="selectWord(this, 'Vr')">Puppy</div>
+        <div class="clickable-word" onclick="selectWord(this, 'Vc')">Sheep</div>
+        <div class="clickable-word" onclick="selectWord(this, 'Ar')">Wolf</div>
+        <div class="clickable-word" onclick="selectWord(this, 'Ac')">Fox</div>
+        <!-- Add as many words as needed -->
+    </div>
+    
+    <!-- Central Display -->
+    <div id="central-display">
+        <!-- Display selected values here -->
+    </div>
+    
+    <!-- Editable Text Boxes -->
+    <textarea class="textbox" placeholder="Type here..."></textarea>
+    <textarea class="textbox" placeholder="Type here..."></textarea>
+
+    <script>
+        let selectedValues = [];
+
+        function selectWord(element, value) {
+            // Toggle the selected class
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                // Remove value from the array
+                selectedValues = selectedValues.filter(v => v !== value);
+            } else {
+                element.classList.add('selected');
+                // Add value to the array
+                selectedValues.push(value);
+            }
+            
+            // Update the central display
+            document.getElementById('central-display').innerText = selectedValues.join(' ');
+        }
+    </script>
+
+</body>
+</html>
