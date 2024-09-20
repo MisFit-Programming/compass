@@ -54,17 +54,12 @@ body, html {
 }
 
 .circle {
-    width: 20px;
-    height: 20px;
     border-radius: 50%;
 }
 
 .vr, .vc, .ar, .ac, .kr, .kc, .ad, .plus {
-    width: 24px;
-    height: 24px;
     font-size: 16px;
     text-align: center;
-    line-height: 24px;
     color: white;
 }
 
