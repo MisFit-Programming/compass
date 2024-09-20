@@ -5,6 +5,11 @@ const colorPicker = document.getElementById('color-picker');
 const positiveAdjInput = document.getElementById('positive-adj');
 const negativeAdjInput = document.getElementById('negative-adj');
 
+// Debugging: Log clicks to ensure they're being registered
+compassContainer.addEventListener('click', function (e) {
+    console.log(`Clicked at X: ${e.clientX}, Y: ${e.clientY}`);
+});
+
 // Shape creation function
 function createShape(x, y, shape, color, positiveAdj, negativeAdj) {
     const shapeElement = document.createElement('div');
@@ -29,7 +34,8 @@ function createShape(x, y, shape, color, positiveAdj, negativeAdj) {
     shapeElement.title = `Positive Adj: ${positiveAdj}, Negative Adj: ${negativeAdj}`;
 
     // Click to remove shape
-    shapeElement.addEventListener('click', function () {
+    shapeElement.addEventListener('click', function (e) {
+        e.stopPropagation(); // Prevents removing on parent click
         shapeElement.remove();
     });
 
@@ -51,6 +57,8 @@ compassContainer.addEventListener('click', function (e) {
     const rect = compassContainer.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+
+    console.log(`Shape: ${selectedShape}, Color: ${selectedColor}, Positive Adj: ${positiveAdj}, Negative Adj: ${negativeAdj}`);
 
     // Create the shape at the clicked position
     createShape(x, y, selectedShape, selectedColor, positiveAdj, negativeAdj);
