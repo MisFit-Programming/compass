@@ -3,42 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Behavior Compass Interaction v1</title>
+    <title>Behavior Compass Interaction</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="controls">
-        <!-- Shape Selector -->
-        <label for="shape-selector">Choose a Shape:</label>
-        <select id="shape-selector">
-            <option value="circle">Circle</option>
-            <option value="vr">Vr</option>
-            <option value="vc">Vc</option>
-            <option value="ar">Ar</option>
-            <option value="ac">Ac</option>
-            <option value="kr">Kr</option>
-            <option value="kc">Kc</option>
-            <option value="ad">Ad</option>
-            <option value="plus">Plus Sign</option>
-        </select>
-
-        <!-- Color Picker -->
-        <label for="color-picker">Choose a Color:</label>
-        <input type="color" id="color-picker" value="#ff0000">
-    </div>
-
-    <!-- Compass Image -->
-    <div id="compass-area" class="compass-container">
+    <div class="compass-container">
         <img src="Compass.png" alt="Behavior Compass" class="compass-image">
-    </div>
-
-    <!-- Text Input for Positive and Negative Adj -->
-    <div class="text-controls">
-        <label for="positive-adj">Positive Adj:</label>
-        <textarea id="positive-adj" rows="5" cols="50" placeholder="Write Positive Adj here..."></textarea>
-
-        <label for="negative-adj">Negative Adj:</label>
-        <textarea id="negative-adj" rows="5" cols="50" placeholder="Write Negative Adj here..."></textarea>
     </div>
 
     <script src="script.js"></script>
