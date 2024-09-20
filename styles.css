@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.compass-container {
+    position: relative;
+    display: inline-block;
+}
+
+.compass-image {
+    width: 600px; /* Adjust as needed */
+    height: auto;
+    display: block;
+}
+
+/* Style for the red circles */
+.circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
