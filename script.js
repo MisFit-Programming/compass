@@ -31,6 +31,9 @@ function createShape(x, y, shape, color, size, positiveAdj, negativeAdj) {
     } else if (shape === 'plus') {
         shapeElement.textContent = '+';
         shapeElement.style.color = color;
+    } else if (shape === 'check') {
+        shapeElement.textContent = '✔';  // Unicode for check mark
+        shapeElement.style.color = color;
     } else {
         shapeElement.textContent = shape.toUpperCase();
         shapeElement.style.color = color;
