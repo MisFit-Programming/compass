@@ -57,13 +57,13 @@ body, html {
     border-radius: 50%;
 }
 
-.vr, .vc, .ar, .ac, .kr, .kc, .ad, .plus {
+.vr, .vc, .ar, .ac, .kr, .kc, .ad, .plus, .check {
     font-size: 16px;
     text-align: center;
     color: white;
 }
 
-.plus {
+.plus, .check {
     font-size: 24px;
     color: white;
 }
