@@ -38,6 +38,7 @@ body, html {
     width: 600px; /* Adjust as needed */
     height: auto;
     display: block;
+    pointer-events: none; /* Prevents issues with registering clicks */
 }
 
 /* Shapes */
