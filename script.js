@@ -9,7 +9,7 @@ const negativeAdjInput = document.getElementById('negative-adj');
 
 // Update size value text when slider is moved
 sizeSlider.addEventListener('input', function () {
-    sizeValue.textContent = sizeSlider.value;
+    sizeValue.textContent = sizeSlider.value;  // Update the label with the current slider value
 });
 
 // Shape creation function
@@ -17,14 +17,14 @@ function createShape(x, y, shape, color, size, positiveAdj, negativeAdj) {
     const shapeElement = document.createElement('div');
     shapeElement.classList.add('shape', shape);
 
-    // Set size
+    // Set size (width and height)
     shapeElement.style.width = `${size}px`;
     shapeElement.style.height = `${size}px`;
 
     // Set position
     shapeElement.style.left = `${x}px`;
     shapeElement.style.top = `${y}px`;
-    
+
     // Set background color for circles, or text and color for others
     if (shape === 'circle') {
         shapeElement.style.backgroundColor = color;
