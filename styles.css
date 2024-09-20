@@ -7,29 +7,91 @@
 body, html {
     height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     background-color: #f0f0f0;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.controls label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.controls input, .controls select {
+    padding: 5px;
+    font-size: 14px;
 }
 
 .compass-container {
     position: relative;
     display: inline-block;
+    width: 600px; /* Match the image width */
 }
 
 .compass-image {
-    width: 600px; /* Adjust as needed */
+    width: 100%;
     height: auto;
     display: block;
+    pointer-events: none; /* Allow clicks to pass through the image */
 }
 
-/* Style for the red circles */
-.circle {
+/* Shapes */
+.shape {
     position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.circle {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: red;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
+}
+
+.vr, .vc, .ar, .ac, .kr, .kc, .ad, .plus {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 24px;
+    color: white;
+}
+
+.plus {
+    font-size: 24px;
+    color: white;
+}
+
+.text-controls {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.text-controls label {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.text-controls textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
 }
