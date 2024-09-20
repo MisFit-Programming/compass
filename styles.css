@@ -64,3 +64,26 @@ body, html {
     font-weight: bold;
     color: white;
 }
+
+.text-controls {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.text-controls label {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.text-controls textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
