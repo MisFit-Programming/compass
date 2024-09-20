@@ -25,17 +25,20 @@
         <!-- Color Picker -->
         <label for="color-picker">Choose a Color:</label>
         <input type="color" id="color-picker" value="#ff0000">
-
-        <!-- Positive and Negative Adj -->
-        <label for="positive-adj">Positive Adj:</label>
-        <input type="text" id="positive-adj" placeholder="Positive Adj">
-
-        <label for="negative-adj">Negative Adj:</label>
-        <input type="text" id="negative-adj" placeholder="Negative Adj">
     </div>
 
-    <div class="compass-container">
-        <img src="behavior-compass.jpg" alt="Behavior Compass" class="compass-image">
+    <!-- Compass Image -->
+    <div id="compass-area" class="compass-container">
+        <img src="Compass.png" alt="Behavior Compass" class="compass-image">
+    </div>
+
+    <!-- Text Input for Positive and Negative Adj -->
+    <div class="text-controls">
+        <label for="positive-adj">Positive Adj:</label>
+        <textarea id="positive-adj" rows="5" cols="50" placeholder="Write Positive Adj here..."></textarea>
+
+        <label for="negative-adj">Negative Adj:</label>
+        <textarea id="negative-adj" rows="5" cols="50" placeholder="Write Negative Adj here..."></textarea>
     </div>
 
     <script src="script.js"></script>
