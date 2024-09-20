@@ -95,3 +95,23 @@ body, html {
     border-radius: 4px;
     resize: none;
 }
+
+/* Ensure colors and shapes remain in print */
+@media print {
+    .circle {
+        background-color: inherit !important; /* Keep chosen background color */
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
+    .shape {
+        background-color: inherit !important;
+        color: inherit !important; /* Retain color of text */
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
+    body {
+        background-color: white !important; /* Ensure background isn't grey in print */
+    }
+}
