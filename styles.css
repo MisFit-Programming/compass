@@ -167,6 +167,14 @@ body, html {
     z-index: 10;
 }
 
+/* Mobile-Specific Tooltip Fixes */
+@media (max-width: 768px) {
+    .help-icon:hover::after {
+        width: 90%; /* Ensure tooltip width fits within screen */
+        left: 5%;   /* Align tooltip properly on mobile */
+        transform: none; /* Remove centering transformation on small screens */
+    }
+
 /* Image-based Help Icon Layout */
 .image-help {
     display: flex;
