@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="controls">
-            <label for="image-selector">Choose an Image:</label>
-            <select id="image-selector">
+    <section class="controls">
+        <!-- Image Selector -->
+        <label for="image-selector">Choose an Image:</label>
+        <select id="image-selector">
             <option value="Compass.png" selected>Compass</option>
             <option value="Fenrir.png">Fenrir</option>
         </select>
+
         <!-- Shape Selector -->
         <label for="shape-selector">Choose a Shape:</label>
         <select id="shape-selector">
@@ -36,27 +38,32 @@
         <label for="size-slider">Size:</label>
         <input type="range" id="size-slider" min="10" max="100" value="20">
         <span id="size-value">20</span>px
-    </div>
-    <div>
-            <button id="export-img-btn">Save as Image</button>
-            <button id="export-pdf-btn">Save as PDF</button>
-    </div>
+    </section>
+
+    <!-- Export Buttons Section -->
+    <section class="export-buttons">
+        <button id="export-img-btn" aria-label="Save the current layout as an image">Save as Image</button>
+        <button id="export-pdf-btn" aria-label="Save the current layout as a PDF">Save as PDF</button>
+    </section>
+
     <!-- Compass Image -->
-    <div id="compass-area" class="compass-container">
+    <section id="compass-area" class="compass-container">
         <img id="dynamic-image" src="Compass.png" alt="Dynamic Image" class="compass-image">
-    </div>
-        <!-- Help icons for image-based items (Val, Nds, Dec, etc.) -->
-        <div class="image-help">
-            <span class="help-icon" data-help="Value Description.">?</span> Val
-            <span class="help-icon" data-help="Needs Description.">?</span> Nds
-            <span class="help-icon" data-help="Decision Description.">?</span> Dec
-            <span class="help-icon" data-help="Sensation Description.">?</span> Sns
-            <span class="help-icon" data-help="PRN Description.">?</span> PRN
-            <span class="help-icon" data-help="HND Description.">?</span> HND
-            <span class="help-icon" data-help="Location Description.">?</span> Loc
-        </div>
+    </section>
+
+    <!-- Help icons for image-based items (Val, Nds, Dec, etc.) -->
+    <section class="image-help">
+        <span class="help-icon" data-help="Value Description.">?</span> Val
+        <span class="help-icon" data-help="Needs Description.">?</span> Nds
+        <span class="help-icon" data-help="Decision Description.">?</span> Dec
+        <span class="help-icon" data-help="Sensation Description.">?</span> Sns
+        <span class="help-icon" data-help="PRN Description.">?</span> PRN
+        <span class="help-icon" data-help="HND Description.">?</span> HND
+        <span class="help-icon" data-help="Location Description.">?</span> Loc
+    </section>
+
     <!-- Text Input for Positive and Negative Adj -->
-    <div class="text-controls">
+    <section class="text-controls">
         <label for="positive-adj">Positive Adj:</label>
         <span class="help-icon" data-help="Enter the Positive Adjustment here.">?</span>
         <textarea id="positive-adj" rows="5" cols="50" placeholder="Write Positive Adj here..."></textarea>
@@ -64,10 +71,11 @@
         <label for="negative-adj">Negative Adj:</label>
         <span class="help-icon" data-help="Enter the Negative Adjustment here.">?</span>
         <textarea id="negative-adj" rows="5" cols="50" placeholder="Write Negative Adj here..."></textarea>
-    </div>
+    </section>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script
+    <script src="script.js"></script>
 </body>
 </html>
