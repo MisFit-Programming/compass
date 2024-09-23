@@ -14,9 +14,11 @@ body, html {
 
 .controls {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
     align-items: center;
+    justify-content: center;
 }
 
 .controls label {
@@ -32,11 +34,12 @@ body, html {
 .compass-container {
     position: relative;
     display: inline-block;
-    width: 600px; /* Match the image width */
+    width: 100%; /* Make image responsive */
+    max-width: 600px; /* Set a max width for larger screens */
 }
 
 .compass-image {
-    width: 100%;
+    width: 100%; /* Responsive image scaling */
     height: auto;
     display: block;
     pointer-events: none; /* Allow clicks to pass through the image */
@@ -91,7 +94,26 @@ body, html {
     resize: none;
 }
 
-/* Ensure colors and shapes remain in print */
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .compass-container {
+        width: 100%; /* Ensure image scales to mobile */
+    }
+
+    .text-controls textarea {
+        width: 100%;
+    }
+
+    .controls input, .controls select {
+        width: 100%;
+    }
+}
+
 @media print {
     .circle {
         background-color: inherit !important; /* Keep chosen background color */
@@ -108,5 +130,3 @@ body, html {
 
     body {
         background-color: white !important; /* Ensure background isn't grey in print */
-    }
-}
