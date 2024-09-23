@@ -40,6 +40,10 @@
 
     <!-- Compass Image -->
     <div id="compass-area" class="compass-container">
+        <div>
+            <button id="export-img-btn">Save as Image</button>
+            <button id="export-pdf-btn">Save as PDF</button>
+        </div>
         <img id="dynamic-image" src="Compass.png" alt="Dynamic Image" class="compass-image">
         <!-- Help icons for image-based items (Val, Nds, Dec, etc.) -->
         <div class="image-help">
@@ -63,10 +67,6 @@
         <span class="help-icon" data-help="Enter the Negative Adjustment here.">?</span>
         <textarea id="negative-adj" rows="5" cols="50" placeholder="Write Negative Adj here..."></textarea>
     </div>
-
-    <!-- Export Buttons -->
-    <button id="export-img-btn">Save as Image</button>
-    <button id="export-pdf-btn">Save as PDF</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
