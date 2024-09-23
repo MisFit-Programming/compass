@@ -159,10 +159,12 @@ body, html {
     padding: 5px;
     border-radius: 4px;
     font-size: 12px;
-    width: auto;       /* Dynamic width based on content */
-    top: 0;            /* Align it with the icon */
+    width: auto;       /* Allow tooltip width to adjust based on content */
+    min-width: 150px;  /* Set a minimum width to avoid small tooltips */
+    max-width: 400px;  /* Allow tooltips to be up to 400px wide */
+    top: 0;            /* Align it with the icon vertically */
     left: 110%;        /* Position to the right of the icon */
-    white-space: normal;
+    white-space: normal; /* Allow multi-line text */
     z-index: 10;
     word-wrap: break-word;
 }
@@ -177,6 +179,7 @@ body, html {
         max-width: none;
     }
 }
+
 
 /* Image-based Help Icon Layout */
 .image-help {
