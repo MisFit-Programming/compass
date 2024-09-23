@@ -1,3 +1,14 @@
+/* Theme Variables */
+:root {
+    --black: #000;
+    --dark-gray: #1a1a1a;
+    --light-gray: #333;
+    --red: #ff0000;
+    --dark-red: #cc0000;
+    --white: #fff;
+    --font-family: Arial, sans-serif;
+}
+
 /* Global Styles */
 * {
     margin: 0;
@@ -10,9 +21,19 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text for readability */
-    font-family: Arial, sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    font-family: var(--font-family);
+}
+
+/* Reusable Input/Select Styles */
+input, select, textarea {
+    background-color: var(--light-gray);
+    color: var(--white);
+    border: 1px solid var(--red);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
 }
 
 /* Controls Section */
@@ -23,34 +44,25 @@ body, html {
     margin-bottom: 20px;
     align-items: center;
     justify-content: center;
-    background-color: #1a1a1a; /* Darker background for controls */
+    background-color: var(--dark-gray);
     padding: 20px;
     border-radius: 8px;
 }
 
 .controls label {
     font-size: 14px;
-    color: #fff; /* White labels */
-}
-
-.controls input, .controls select {
-    padding: 5px;
-    font-size: 14px;
-    background-color: #333; /* Dark background for inputs */
-    color: #fff; /* White text */
-    border: 1px solid #ff0000; /* Red border for inputs */
-    border-radius: 4px;
+    color: var(--white);
 }
 
 /* Compass Container */
 .compass-container {
-    position: relative; /* Establish positioning context for absolute positioning */
+    position: relative;
     display: inline-block;
     width: 100%;
     max-width: 600px;
-    background-color: #000; /* Black background for the image container */
+    background-color: var(--black);
     padding: 10px;
-    border: 2px solid #ff0000; /* Red border around the container */
+    border: 2px solid var(--red);
     border-radius: 8px;
 }
 
@@ -58,38 +70,37 @@ body, html {
     width: 100%;
     height: auto;
     display: block;
-    pointer-events: none; /* Allow clicks to pass through to the container */
-    position: relative; /* Ensure the image stays below the shapes */
-    z-index: 1; /* Lower z-index to keep it behind shapes */
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
 }
 
 /* Shapes */
 .shape {
-    position: absolute; /* Must be absolute to position inside compass-container */
-    transform: translate(-50%, -50%); /* Center shape at the click position */
-    z-index: 10; /* Ensure shapes are on top of the image */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: #fff; /* White text for text-based shapes */
+    color: var(--white);
 }
 
 .circle {
-    background-color: #ff0000; /* Red background for circles */
+    background-color: var(--red);
     border-radius: 50%;
-    border: 2px solid #fff; /* White border to make it stand out */
+    border: 2px solid var(--white);
 }
 
 .plus, .check {
     background-color: transparent;
-    color: #ff0000; /* Red color for text-based shapes */
+    color: var(--red);
     font-size: 24px;
 }
 
-
-/* Text Inputs */
+/* Text Inputs Section */
 .text-controls {
     display: flex;
     flex-direction: column;
@@ -99,7 +110,7 @@ body, html {
 .text-controls label {
     font-size: 16px;
     margin-top: 10px;
-    color: #fff; /* White text */
+    color: var(--white);
 }
 
 .text-controls textarea {
@@ -108,17 +119,17 @@ body, html {
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
-    background-color: #333; /* Dark background for text areas */
-    color: #fff; /* White text */
-    border: 1px solid #ff0000; /* Red border */
+    background-color: var(--light-gray);
+    color: var(--white);
+    border: 1px solid var(--red);
     border-radius: 4px;
     resize: none;
 }
 
 /* Button Styles */
 button {
-    background-color: #ff0000; /* Red buttons */
-    color: #000; /* Black text on buttons */
+    background-color: var(--red);
+    color: var(--black);
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -128,15 +139,15 @@ button {
 }
 
 button:hover {
-    background-color: #cc0000; /* Darker red on hover */
+    background-color: var(--dark-red);
 }
 
-/* Tooltip Styling for Right Alignment */
+/* Tooltip Styling */
 .help-icon {
     display: inline-block;
-    background-color: #ff0000; /* Red background */
-    color: #000; /* Black question mark text */
-    border: 1px solid #cc0000; /* Slightly darker red border */
+    background-color: var(--red);
+    color: var(--black);
+    border: 1px solid var(--dark-red);
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -147,25 +158,24 @@ button:hover {
     margin-left: 5px;
 }
 
-/* Tooltip text */
 .help-icon:hover::after {
     content: attr(data-help);
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.9); /* Black tooltip background */
-    color: #ff0000; /* Red tooltip text */
+    background-color: rgba(0, 0, 0, 0.9);
+    color: var(--red);
     padding: 10px;
     border-radius: 4px;
     font-size: 12px;
     width: auto;
     max-width: 300px;
     top: 0;
-    left: 110%; /* Tooltip positioned to the right of the icon */
+    left: 110%;
     white-space: normal;
     z-index: 10;
     word-wrap: break-word;
 }
 
-/* Ensure tooltips adjust dynamically on mobile */
+/* Mobile Adjustments for Tooltip */
 @media (max-width: 768px) {
     .help-icon:hover::after {
         left: 10px;
@@ -175,7 +185,7 @@ button:hover {
     }
 }
 
-/* Media Queries for Mobile Responsiveness */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .controls {
         flex-direction: column;
@@ -186,11 +196,9 @@ button:hover {
         width: 100%;
     }
 
-    .text-controls textarea {
-        width: 100%;
-    }
-
-    .controls input, .controls select {
+    .text-controls textarea,
+    .controls input, 
+    .controls select {
         width: 100%;
     }
 }
