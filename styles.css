@@ -114,6 +114,7 @@ body, html {
     }
 }
 
+/* Print Styles */
 @media print {
     .circle {
         background-color: inherit !important; /* Keep chosen background color */
@@ -130,8 +131,10 @@ body, html {
 
     body {
         background-color: white !important; /* Ensure background isn't grey in print */
+    }
+}
 
-        /* Basic Help Icon */
+/* Basic Help Icon */
 .help-icon {
     display: inline-block;
     background-color: #f0f0f0;
@@ -171,28 +174,3 @@ body, html {
     flex-wrap: wrap;
     margin-top: 20px;
 }
-
-.text-controls {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-.text-controls label {
-    display: inline-block;
-    margin-right: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-}
-
-.text-controls textarea {
-    width: 100%;
-    max-width: 600px;
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
-}
-
