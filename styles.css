@@ -160,7 +160,6 @@ body, html {
     border-radius: 4px;
     font-size: 12px;
     width: auto;       /* Dynamic width based on content */
-    max-width: 220px;  /* Set a max width for the tooltip */
     top: 0;            /* Align it with the icon */
     left: 110%;        /* Position to the right of the icon */
     white-space: normal;
