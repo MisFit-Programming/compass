@@ -150,7 +150,7 @@ body, html {
     margin-left: 5px;
 }
 
-/* Tooltip Styling */
+/* Tooltip Styling for Right Alignment */
 .help-icon:hover::after {
     content: attr(data-help); /* Display the help text stored in the data-help attribute */
     position: absolute;
@@ -159,21 +159,25 @@ body, html {
     padding: 5px;
     border-radius: 4px;
     font-size: 12px;
-    width: 220px;
-    top: 25px; /* Position below the help icon */
-    left: 50%;
-    transform: translateX(-50%);
+    width: auto;       /* Dynamic width based on content */
+    max-width: 220px;  /* Set a max width for the tooltip */
+    top: 0;            /* Align it with the icon */
+    left: 110%;        /* Position to the right of the icon */
     white-space: normal;
     z-index: 10;
+    word-wrap: break-word;
 }
 
-/* Mobile-Specific Tooltip Fixes */
+/* Ensure tooltips adjust dynamically on mobile */
 @media (max-width: 768px) {
     .help-icon:hover::after {
-        width: 90%; /* Ensure tooltip width fits within screen */
-        left: 5%;   /* Align tooltip properly on mobile */
-        transform: none; /* Remove centering transformation on small screens */
+        left: 10px;    /* Ensure the tooltip stays within the viewport */
+        right: 10px;   /* Prevent it from exceeding screen width */
+        top: 25px;     /* Position slightly below on mobile */
+        width: 90%;    /* Tooltip takes 90% of the screen on mobile */
+        max-width: none;
     }
+}
 
 /* Image-based Help Icon Layout */
 .image-help {
