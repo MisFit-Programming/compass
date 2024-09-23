@@ -17,24 +17,28 @@ function createShape(x, y, shape, color, size, positiveAdj, negativeAdj) {
     const shapeElement = document.createElement('div');
     shapeElement.classList.add('shape', shape);
 
-    // Set size (width and height)
-    shapeElement.style.width = `${size}px`;
-    shapeElement.style.height = `${size}px`;
-
-    // Set position
+    // Set position (use absolute positioning to place it based on click)
     shapeElement.style.left = `${x}px`;
     shapeElement.style.top = `${y}px`;
 
-    // Set background color for circles, or text and color for others
+    // Handle different shape types
     if (shape === 'circle') {
+        // Set size and color for circles
+        shapeElement.style.width = `${size}px`;
+        shapeElement.style.height = `${size}px`;
         shapeElement.style.backgroundColor = color;
     } else if (shape === 'plus') {
+        // Plus sign
         shapeElement.textContent = '+';
         shapeElement.style.color = color;
+        shapeElement.style.fontSize = `${size}px`; // Dynamically adjust font size
     } else if (shape === 'check') {
-        shapeElement.textContent = '✔';  // Unicode for check mark
+        // Check mark
+        shapeElement.textContent = '✔';
         shapeElement.style.color = color;
+        shapeElement.style.fontSize = `${size}px`; // Dynamically adjust font size
     } else {
+        // Other text-based shapes
         shapeElement.textContent = shape.toUpperCase();
         shapeElement.style.color = color;
         shapeElement.style.fontSize = `${size / 2}px`;  // Adjust font size for text-based shapes
@@ -74,6 +78,7 @@ compassContainer.addEventListener('click', function (e) {
     // Create the shape at the clicked position
     createShape(x, y, selectedShape, selectedColor, selectedSize, positiveAdj, negativeAdj);
 });
+
 // Export the compass area as an Image (PNG/JPG)
 document.getElementById('export-img-btn').addEventListener('click', function () {
     const compassArea = document.getElementById('compass-area');
@@ -108,6 +113,7 @@ document.getElementById('export-pdf-btn').addEventListener('click', function () 
         pdf.save('compass.pdf');
     });
 });
+
 // Image selector functionality
 document.getElementById('image-selector').addEventListener('change', function() {
     const selectedImage = this.value;  // Get the selected image filename
