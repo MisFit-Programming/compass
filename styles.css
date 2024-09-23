@@ -44,7 +44,7 @@ body, html {
 
 /* Compass Container */
 .compass-container {
-    position: relative;
+    position: relative; /* Establish positioning context for absolute positioning */
     display: inline-block;
     width: 100%;
     max-width: 600px;
@@ -58,8 +58,36 @@ body, html {
     width: 100%;
     height: auto;
     display: block;
-    pointer-events: none;
+    pointer-events: none; /* Allow clicks to pass through to the container */
+    position: relative; /* Ensure the image stays below the shapes */
+    z-index: 1; /* Lower z-index to keep it behind shapes */
 }
+
+/* Shapes */
+.shape {
+    position: absolute; /* Must be absolute to position inside compass-container */
+    transform: translate(-50%, -50%); /* Center shape at the click position */
+    z-index: 10; /* Ensure shapes are on top of the image */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff; /* White text for text-based shapes */
+}
+
+.circle {
+    background-color: #ff0000; /* Red background for circles */
+    border-radius: 50%;
+    border: 2px solid #fff; /* White border to make it stand out */
+}
+
+.plus, .check {
+    background-color: transparent;
+    color: #ff0000; /* Red color for text-based shapes */
+    font-size: 24px;
+}
+
 
 /* Text Inputs */
 .text-controls {
