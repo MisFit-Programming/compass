@@ -74,3 +74,42 @@ compassContainer.addEventListener('click', function (e) {
     // Create the shape at the clicked position
     createShape(x, y, selectedShape, selectedColor, selectedSize, positiveAdj, negativeAdj);
 });
+// Export the compass area as an Image (PNG/JPG)
+document.getElementById('export-img-btn').addEventListener('click', function () {
+    const compassArea = document.getElementById('compass-area');
+
+    html2canvas(compassArea).then(function (canvas) {
+        // Convert the canvas to an image and download it
+        const link = document.createElement('a');
+        link.download = 'compass-image.png'; // Filename for the download
+        link.href = canvas.toDataURL('image/png'); // Convert canvas to PNG format
+        link.click(); // Trigger the download
+    });
+});
+
+// Export the compass area as a PDF
+document.getElementById('export-pdf-btn').addEventListener('click', function () {
+    const compassArea = document.getElementById('compass-area');
+
+    html2canvas(compassArea).then(function (canvas) {
+        // Initialize jsPDF
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+
+        // Convert canvas to an image and add it to the PDF
+        const imgData = canvas.toDataURL('image/png');
+        const imgWidth = 210; // A4 page width in mm (for landscape)
+        const pageHeight = 297; // A4 page height in mm
+        const imgHeight = canvas.height * imgWidth / canvas.width; // Calculate the image height proportionally
+        
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight); // Add image to PDF
+        
+        // Save the generated PDF
+        pdf.save('compass.pdf');
+    });
+});
+// Image selector functionality
+document.getElementById('image-selector').addEventListener('change', function() {
+    const selectedImage = this.value;  // Get the selected image filename
+    document.getElementById('dynamic-image').src = selectedImage;  // Update the image src
+});
