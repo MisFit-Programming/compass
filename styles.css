@@ -130,3 +130,69 @@ body, html {
 
     body {
         background-color: white !important; /* Ensure background isn't grey in print */
+
+        /* Basic Help Icon */
+.help-icon {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    margin-left: 5px;
+}
+
+/* Tooltip Styling */
+.help-icon:hover::after {
+    content: attr(data-help); /* Display the help text stored in the data-help attribute */
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    width: 220px;
+    top: 25px; /* Position below the help icon */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: normal;
+    z-index: 10;
+}
+
+/* Image-based Help Icon Layout */
+.image-help {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.text-controls {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.text-controls label {
+    display: inline-block;
+    margin-right: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.text-controls textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
