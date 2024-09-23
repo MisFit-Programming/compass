@@ -36,14 +36,26 @@
     <!-- Compass Image -->
     <div id="compass-area" class="compass-container">
         <img src="Compass.png" alt="Behavior Compass" class="compass-image">
+         <!-- Help icons for image-based items (Val, Nds, Dec, etc.) -->
+        <div class="image-help">
+            <span class="help-icon" data-help="Value Description.">?</span> Val
+            <span class="help-icon" data-help="Needs Description.">?</span> Nds
+            <span class="help-icon" data-help="Decision Description.">?</span> Dec
+            <span class="help-icon" data-help="Sensation Description.">?</span> Sns
+            <span class="help-icon" data-help="PRN Description.">?</span> PRN
+            <span class="help-icon" data-help="HND Description.">?</span> HND
+            <span class="help-icon" data-help="Location Description.">?</span> Loc
+        </div>
     </div>
 
     <!-- Text Input for Positive and Negative Adj -->
     <div class="text-controls">
         <label for="positive-adj">Positive Adj:</label>
+        <span class="help-icon" data-help="Enter the Positive Adjustment here.">?</span>
         <textarea id="positive-adj" rows="5" cols="50" placeholder="Write Positive Adj here..."></textarea>
 
         <label for="negative-adj">Negative Adj:</label>
+        <span class="help-icon" data-help="Enter the Negative Adjustment here.">?</span>
         <textarea id="negative-adj" rows="5" cols="50" placeholder="Write Negative Adj here..."></textarea>
     </div>
 
