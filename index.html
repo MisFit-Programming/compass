@@ -8,6 +8,12 @@
 </head>
 <body>
     <div class="controls">
+            <label for="image-selector">Choose an Image:</label>
+            <select id="image-selector">
+            <option value="Compass.png" selected>Compass</option>
+            <option value="Image1.png">Image 1</option>
+            <option value="Image2.png">Image 2</option>
+        </select>
         <!-- Shape Selector -->
         <label for="shape-selector">Choose a Shape:</label>
         <select id="shape-selector">
@@ -35,7 +41,7 @@
 
     <!-- Compass Image -->
     <div id="compass-area" class="compass-container">
-        <img src="Compass.png" alt="Behavior Compass" class="compass-image">
+        <img id="dynamic-image" src="Compass.png" alt="Dynamic Image" class="compass-image">
         <!-- Help icons for image-based items (Val, Nds, Dec, etc.) -->
         <div class="image-help">
             <span class="help-icon" data-help="Value Description.">?</span> Val
@@ -59,6 +65,12 @@
         <textarea id="negative-adj" rows="5" cols="50" placeholder="Write Negative Adj here..."></textarea>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Export Buttons -->
+    <button id="export-img-btn">Save as Image</button>
+    <button id="export-pdf-btn">Save as PDF</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script
 </body>
 </html>
