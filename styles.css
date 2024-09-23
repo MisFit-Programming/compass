@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -9,9 +10,12 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text for readability */
+    font-family: Arial, sans-serif;
 }
 
+/* Controls Section */
 .controls {
     display: flex;
     flex-wrap: wrap;
@@ -19,58 +23,45 @@ body, html {
     margin-bottom: 20px;
     align-items: center;
     justify-content: center;
+    background-color: #1a1a1a; /* Darker background for controls */
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .controls label {
-    font-family: Arial, sans-serif;
     font-size: 14px;
+    color: #fff; /* White labels */
 }
 
 .controls input, .controls select {
     padding: 5px;
     font-size: 14px;
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* White text */
+    border: 1px solid #ff0000; /* Red border for inputs */
+    border-radius: 4px;
 }
 
+/* Compass Container */
 .compass-container {
     position: relative;
     display: inline-block;
-    width: 100%; /* Make image responsive */
-    max-width: 600px; /* Set a max width for larger screens */
+    width: 100%;
+    max-width: 600px;
+    background-color: #000; /* Black background for the image container */
+    padding: 10px;
+    border: 2px solid #ff0000; /* Red border around the container */
+    border-radius: 8px;
 }
 
 .compass-image {
-    width: 100%; /* Responsive image scaling */
+    width: 100%;
     height: auto;
     display: block;
-    pointer-events: none; /* Allow clicks to pass through the image */
+    pointer-events: none;
 }
 
-/* Shapes */
-.shape {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
-
-.circle {
-    border-radius: 50%;
-}
-
-.vr, .vc, .ar, .ac, .kr, .kc, .ad, .plus, .check {
-    font-size: 16px;
-    text-align: center;
-    color: white;
-}
-
-.plus, .check {
-    font-size: 24px;
-    color: white;
-}
-
+/* Text Inputs */
 .text-controls {
     display: flex;
     flex-direction: column;
@@ -78,9 +69,9 @@ body, html {
 }
 
 .text-controls label {
-    font-family: Arial, sans-serif;
     font-size: 16px;
     margin-top: 10px;
+    color: #fff; /* White text */
 }
 
 .text-controls textarea {
@@ -89,57 +80,35 @@ body, html {
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    background-color: #333; /* Dark background for text areas */
+    color: #fff; /* White text */
+    border: 1px solid #ff0000; /* Red border */
     border-radius: 4px;
     resize: none;
 }
 
-/* Media Queries for Mobile Responsiveness */
-@media (max-width: 768px) {
-    .controls {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .compass-container {
-        width: 100%; /* Ensure image scales to mobile */
-    }
-
-    .text-controls textarea {
-        width: 100%;
-    }
-
-    .controls input, .controls select {
-        width: 100%;
-    }
+/* Button Styles */
+button {
+    background-color: #ff0000; /* Red buttons */
+    color: #000; /* Black text on buttons */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
 }
 
-/* Print Styles */
-@media print {
-    .circle {
-        background-color: inherit !important; /* Keep chosen background color */
-        -webkit-print-color-adjust: exact;
-        color-adjust: exact;
-    }
-
-    .shape {
-        background-color: inherit !important;
-        color: inherit !important; /* Retain color of text */
-        -webkit-print-color-adjust: exact;
-        color-adjust: exact;
-    }
-
-    body {
-        background-color: white !important; /* Ensure background isn't grey in print */
-    }
+button:hover {
+    background-color: #cc0000; /* Darker red on hover */
 }
 
-/* Basic Help Icon */
+/* Tooltip Styling for Right Alignment */
 .help-icon {
     display: inline-block;
-    background-color: #f0f0f0;
-    color: #333;
-    border: 1px solid #ccc;
+    background-color: #ff0000; /* Red background */
+    color: #000; /* Black question mark text */
+    border: 1px solid #cc0000; /* Slightly darker red border */
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -150,21 +119,20 @@ body, html {
     margin-left: 5px;
 }
 
-/* Tooltip Styling for Right Alignment */
+/* Tooltip text */
 .help-icon:hover::after {
-    content: attr(data-help); /* Display the help text stored in the data-help attribute */
+    content: attr(data-help);
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.9); /* Black tooltip background */
+    color: #ff0000; /* Red tooltip text */
+    padding: 10px;
     border-radius: 4px;
     font-size: 12px;
-    width: auto;       /* Allow tooltip width to adjust based on content */
-    min-width: 150px;  /* Set a minimum width to avoid small tooltips */
-    max-width: 400px;  /* Allow tooltips to be up to 400px wide */
-    top: 0;            /* Align it with the icon vertically */
-    left: 110%;        /* Position to the right of the icon */
-    white-space: normal; /* Allow multi-line text */
+    width: auto;
+    max-width: 300px;
+    top: 0;
+    left: 110%; /* Tooltip positioned to the right of the icon */
+    white-space: normal;
     z-index: 10;
     word-wrap: break-word;
 }
@@ -172,19 +140,29 @@ body, html {
 /* Ensure tooltips adjust dynamically on mobile */
 @media (max-width: 768px) {
     .help-icon:hover::after {
-        left: 10px;    /* Ensure the tooltip stays within the viewport */
-        right: 10px;   /* Prevent it from exceeding screen width */
-        top: 25px;     /* Position slightly below on mobile */
-        width: 90%;    /* Tooltip takes 90% of the screen on mobile */
-        max-width: none;
+        left: 10px;
+        right: 10px;
+        top: 25px;
+        width: 90%;
     }
 }
 
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        gap: 5px;
+    }
 
-/* Image-based Help Icon Layout */
-.image-help {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    .compass-container {
+        width: 100%;
+    }
+
+    .text-controls textarea {
+        width: 100%;
+    }
+
+    .controls input, .controls select {
+        width: 100%;
+    }
 }
