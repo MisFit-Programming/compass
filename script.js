@@ -19,7 +19,6 @@ sizeSlider.addEventListener('input', function () {
 imageSelector.addEventListener('change', function () {
     const selectedImage = this.value;
     dynamicImage.src = selectedImage; // Update the dynamic image src attribute
-    console.log(`Image updated to: ${selectedImage}`); // Log the image change for debugging
 });
 
 // Handle image upload
@@ -29,7 +28,6 @@ imageUpload.addEventListener('change', function(event) {
         const reader = new FileReader();
         reader.onload = function(e) {
             dynamicImage.src = e.target.result; // Set the new image source as base64
-            console.log('Uploaded image updated successfully'); // Log the success of the upload
         };
         reader.readAsDataURL(file); // Convert the uploaded file to Data URL
     }
@@ -89,18 +87,53 @@ compassContainer.addEventListener('click', function (e) {
     createShape(x, y, selectedShape, selectedColor, selectedSize, positiveAdj, negativeAdj);
 });
 
+// Helper function to append text areas to the compass before export
+function appendTextToCompass() {
+    const posText = document.createElement('div');
+    posText.textContent = `Positive Adj: ${positiveAdjInput.value}`;
+    posText.style.position = 'absolute';
+    posText.style.bottom = '10px'; // Position it at the bottom of the canvas
+    posText.style.left = '10px';
+    posText.style.color = '#ff0000'; // Red text to match the theme
+    posText.style.fontSize = '16px';
+    posText.classList.add('text-on-canvas'); // Add a class to remove it later
+
+    const negText = document.createElement('div');
+    negText.textContent = `Negative Adj: ${negativeAdjInput.value}`;
+    negText.style.position = 'absolute';
+    negText.style.bottom = '30px'; // Position it slightly above Positive Adj
+    negText.style.left = '10px';
+    negText.style.color = '#ff0000';
+    negText.style.fontSize = '16px';
+    negText.classList.add('text-on-canvas');
+
+    compassContainer.appendChild(posText);
+    compassContainer.appendChild(negText);
+}
+
+// Helper function to remove the appended text after export
+function removeTextFromCompass() {
+    document.querySelectorAll('.text-on-canvas').forEach(el => el.remove());
+}
+
 // Save the layout as an image (PNG)
 document.getElementById('export-img-btn').addEventListener('click', function() {
+    appendTextToCompass();  // Add text to the canvas
+
     html2canvas(compassContainer, { useCORS: true, scale: 2 }).then(canvas => {
         const link = document.createElement('a');
         link.download = 'compass-image.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
+
+        removeTextFromCompass();  // Remove text after export
     });
 });
 
 // Save the layout as a PDF
 document.getElementById('export-pdf-btn').addEventListener('click', function() {
+    appendTextToCompass();  // Add text to the canvas
+
     html2canvas(compassContainer, { useCORS: true, scale: 2 }).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
         const { jsPDF } = window.jspdf;
@@ -110,5 +143,7 @@ document.getElementById('export-pdf-btn').addEventListener('click', function() {
 
         pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
         pdf.save('compass-layout.pdf');
+
+        removeTextFromCompass();  // Remove text after export
     });
 });
