@@ -142,7 +142,7 @@ button:hover {
     background-color: var(--dark-red);
 }
 
-/* Tooltip Styling */
+/* Help Icon */
 .help-icon {
     display: inline-block;
     background-color: var(--red);
@@ -158,34 +158,54 @@ button:hover {
     margin-left: 5px;
 }
 
-.help-icon:hover::after {
-    content: attr(data-help);
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: var(--red);
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    width: auto;
-    max-width: 300px;
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 100;
+    left: 0;
     top: 0;
-    left: 110%;
-    white-space: normal;
-    z-index: 10;
-    word-wrap: break-word;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
-/* Mobile Adjustments for Tooltip */
-@media (max-width: 768px) {
-    .help-icon:hover::after {
-        left: 10px;
-        right: 10px;
-        top: 25px;
-        width: 90%;
-    }
+/* Dynamic Help Modal Content */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    padding: 30px; /* More padding for desktop */
+    border-radius: 10px;
+    width: 400px; /* Larger width for desktop */
+    max-width: 90%; /* Ensure it adapts to smaller screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left; /* Align text to the left for readability */
+    color: var(--black);
+    font-size: 18px; /* Larger text for better readability on desktop */
+    line-height: 1.6; /* Better line spacing for readability */
+    white-space: pre-wrap; /* Respect line breaks and carriage returns */
 }
 
-/* Mobile Responsiveness */
+/* Close Button */
+.close-btn {
+    color: var(--dark-gray);
+    float: right;
+    font-size: 26px; /* Larger close button on desktop */
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 15px; /* Space between the close button and the text */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--black);
+    text-decoration: none;
+}
+
+/* Mobile Adjustments */
 @media (max-width: 768px) {
     .controls {
         flex-direction: column;
@@ -200,5 +220,17 @@ button:hover {
     .controls input, 
     .controls select {
         width: 100%;
+    }
+
+    /* Mobile Help Modal Adjustments */
+    .modal-content {
+        width: 85%; /* Make the modal width smaller on mobile */
+        font-size: 16px; /* Slightly reduce font size */
+        padding: 20px; /* Reduce padding for smaller screens */
+        line-height: 1.5; /* Adjust line spacing for readability */
+    }
+
+    .close-btn {
+        font-size: 22px; /* Slightly smaller close button on mobile */
     }
 }
