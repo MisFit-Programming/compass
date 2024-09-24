@@ -96,6 +96,7 @@ function appendTextToCompass() {
     posText.style.left = '10px';
     posText.style.color = '#ff0000'; // Red text to match the theme
     posText.style.fontSize = '16px';
+    posText.style.zIndex = '10';  // Ensure the text is on top of everything
     posText.classList.add('text-on-canvas'); // Add a class to remove it later
 
     const negText = document.createElement('div');
@@ -105,6 +106,7 @@ function appendTextToCompass() {
     negText.style.left = '10px';
     negText.style.color = '#ff0000';
     negText.style.fontSize = '16px';
+    negText.style.zIndex = '10';  // Ensure the text is on top of everything
     negText.classList.add('text-on-canvas');
 
     compassContainer.appendChild(posText);
