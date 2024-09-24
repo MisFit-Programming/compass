@@ -132,6 +132,29 @@
             compassArea.appendChild(shapeElement);
         });
 
+        // Save the layout as an image (PNG)
+        document.getElementById('export-img-btn').addEventListener('click', function() {
+            html2canvas(compassArea).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'compass-image.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+
+        // Save the layout as a PDF
+        document.getElementById('export-pdf-btn').addEventListener('click', function() {
+            html2canvas(compassArea).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('portrait', 'mm', 'a4');
+                const imgWidth = 210;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.save('compass-layout.pdf');
+            });
+        });
     </script>
 </body>
 </html>
