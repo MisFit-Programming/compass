@@ -116,3 +116,33 @@ compassContainer.addEventListener('click', function (e) {
     // Create the shape at the clicked position if not in "Erase" mode
     createShape(x, y, selectedShape, selectedColor, selectedSize, positiveAdj, negativeAdj);
 });
+
+// Save the layout as an image (PNG)
+document.getElementById('export-img-btn').addEventListener('click', function() {
+    html2canvas(compassContainer, {
+        useCORS: true, // Allows cross-origin images to be included
+        scale: 2       // Higher scale for better resolution on export
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'compass-image.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+});
+
+// Save the layout as a PDF
+document.getElementById('export-pdf-btn').addEventListener('click', function() {
+    html2canvas(compassContainer, {
+        useCORS: true, // Allows cross-origin images to be included
+        scale: 2       // Higher scale for better resolution on export
+    }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('portrait', 'mm', 'a4');
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save('compass-layout.pdf');
+    });
+});
