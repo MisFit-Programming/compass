@@ -10,7 +10,7 @@
     <section class="controls">
         <!-- Image Selector -->
         <label for="image-selector">Choose an Image:</label>
-        <select id="image-selector">
+        <select id="image-selector" aria-label="Select an image to display on the compass">
             <option value="Charisma Compass.png" selected>Charisma Compass</option>
             <option value="Compass.png">Compass</option>
             <option value="Fenrir.png">Fenrir</option>
@@ -18,7 +18,7 @@
 
         <!-- Shape Selector -->
         <label for="shape-selector">Choose a Shape:</label>
-        <select id="shape-selector">
+        <select id="shape-selector" aria-label="Select a shape to place on the image">
             <option value="check" selected>Check Mark (✔)</option>
             <option value="circle">Circle</option>
             <option value="vr">Vr</option>
@@ -33,11 +33,11 @@
 
         <!-- Color Picker -->
         <label for="color-picker">Choose a Color:</label>
-        <input type="color" id="color-picker" value="#ff0000">
+        <input type="color" id="color-picker" value="#ff0000" aria-label="Pick a color for the shapes">
 
         <!-- Size Slider -->
         <label for="size-slider">Size:</label>
-        <input type="range" id="size-slider" min="10" max="100" value="20">
+        <input type="range" id="size-slider" min="10" max="100" value="20" aria-label="Adjust shape size">
         <span id="size-value">20</span>px
     </section>
 
@@ -49,30 +49,84 @@
 
     <!-- Compass Image -->
     <section id="compass-area" class="compass-container">
-        <img id="dynamic-image" src="Compass.png" alt="Dynamic Image" class="compass-image">
+        <img id="dynamic-image" src="Compass.png" alt="Dynamic Image" class="compass-image" aria-label="Main compass image">
     </section>
 
     <!-- Help icons for image-based items (Val, Nds, Dec, etc.) -->
     <section class="image-help">
-        <span class="help-icon" data-help="Value Description.">?</span> Val
-        <span class="help-icon" data-help="Needs Description.">?</span> Nds
-        <span class="help-icon" data-help="Decision Description.">?</span> Dec
-        <span class="help-icon" data-help="Sensation Description.">?</span> Sns
-        <span class="help-icon" data-help="PRN Description.">?</span> PRN
-        <span class="help-icon" data-help="HND Description.">?</span> HND
-        <span class="help-icon" data-help="Location Description.">?</span> Loc
+        <span class="help-icon" data-help="Values are the 'why' behind people's behaviors. 
+
+        Examples:
+
+        CONNECTION - Prioritizing relationships with others.
+        INFORMATION - Pursuing knowledge and data.
+        RECOGNITION - Seeking acknowledgment from others.
+        EXPERIENCE - Valuing life experiences.
+        FREEDOM - Valuing liberty and independence.
+        GROWTH - Seeing success as ongoing improvement.">?</span> Val
+
+        <span class="help-icon" data-help="Primary emotional needs shape people's behaviors. 
+
+        Examples:
+
+        SIGNIFICANCE - Desire to feel important.
+        APPROVAL - Seeking recognition from others.
+        ACCEPTANCE - Needing to feel part of a group.
+        INTELLIGENCE - Demonstrating intellectual superiority.
+        PITY - Seeking sympathy for hardships.
+        STRENGTH/POWER - Wanting to appear powerful.">?</span> Nds
+
+        <span class="help-icon" data-help="The Decision Map influences people's choices. 
+
+        Examples:
+
+        DEVIANCE - Standing out and breaking norms.
+        NOVELTY - Being an early adopter.
+        SOCIAL - Fitting in and connecting with others.
+        CONFORMITY - Aligning with peer group.
+        INVESTMENT - Seeking a valuable return.
+        NECESSITY - Focusing on essential actions.">?</span> Dec
+
+        <span class="help-icon" data-help="People process information using different 
+
+        Representational Systems:
+
+        VISUAL - Thinking in pictures.
+        AUDITORY - Thinking in words/sounds.
+        KINESTHETIC - Thinking in terms of feelings or actions.">?</span> Sns
+
+        <span class="help-icon" data-help="Pronouns can show someone's social focus:
+
+        SELF - Focuses on 'I' or 'me.'
+        TEAM - Focuses on 'we' or 'our.'
+        OTHER - Focuses on people outside their group.">?</span> PRN
+
+        <span class="help-icon" data-help="Handedness reflects which hand a person favors, indicating dominant brain hemispheres.">?</span> HND
+
+        <span class="help-icon" data-help="Locus of Control reflects whether people feel in control of their lives.
+
+        INTERNAL - Believing they control their destiny.
+        EXTERNAL - Believing fate or external factors control their life.">?</span> Loc
     </section>
 
     <!-- Text Input for Positive and Negative Adj -->
     <section class="text-controls">
         <label for="positive-adj">Positive Adj:</label>
-        <span class="help-icon" data-help="Enter the Positive Adjustment here.">?</span>
-        <textarea id="positive-adj" rows="5" cols="50" placeholder="Write Positive Adj here..."></textarea>
+        <span class="help-icon" data-help="Adjectives describe someone's internal processes. Identifying their positive adjectives helps improve communication.">?</span>
+        <textarea id="positive-adj" rows="5" cols="50" placeholder="Write Positive Adj here..." aria-label="Enter positive adjectives"></textarea>
 
         <label for="negative-adj">Negative Adj:</label>
-        <span class="help-icon" data-help="Enter the Negative Adjustment here.">?</span>
-        <textarea id="negative-adj" rows="5" cols="50" placeholder="Write Negative Adj here..."></textarea>
+        <span class="help-icon" data-help="Negative adjectives signal conditioned stimuli for an individual's behavior. Understanding these can enhance communication.">?</span>
+        <textarea id="negative-adj" rows="5" cols="50" placeholder="Write Negative Adj here..." aria-label="Enter negative adjectives"></textarea>
     </section>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-labelledby="helpText" aria-modal="true">
+            <span class="close-btn" aria-label="Close help modal">&times;</span>
+            <p id="helpText">Help text goes here...</p>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
