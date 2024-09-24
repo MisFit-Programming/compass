@@ -7,6 +7,12 @@ const sizeValue = document.getElementById('size-value');
 const positiveAdjInput = document.getElementById('positive-adj');
 const negativeAdjInput = document.getElementById('negative-adj');
 
+// Modal-related DOM elements
+const helpModal = document.getElementById('helpModal');
+const closeBtn = document.querySelector('.close-btn');
+const helpText = document.getElementById('helpText');
+const helpIcons = document.querySelectorAll('.help-icon');
+
 // Update size value text when slider is moved
 sizeSlider.addEventListener('input', function () {
     sizeValue.textContent = sizeSlider.value;  // Update the label with the current slider value
@@ -79,38 +85,68 @@ compassContainer.addEventListener('click', function (e) {
     createShape(x, y, selectedShape, selectedColor, selectedSize, positiveAdj, negativeAdj);
 });
 
+// Function to append text areas to the compass area before saving
+function appendTextToCanvas() {
+    const posText = document.createElement('div');
+    posText.textContent = `Positive Adj: ${positiveAdjInput.value}`;
+    posText.style.position = 'absolute';
+    posText.style.bottom = '10px'; // Position it at the bottom of the canvas
+    posText.style.left = '10px';
+    posText.style.color = '#ff0000'; // Red text to match the theme
+    posText.style.fontSize = '16px';
+    posText.classList.add('text-on-canvas'); // Add a class to remove it later
+
+    const negText = document.createElement('div');
+    negText.textContent = `Negative Adj: ${negativeAdjInput.value}`;
+    negText.style.position = 'absolute';
+    negText.style.bottom = '30px'; // Position it slightly above Positive Adj
+    negText.style.left = '10px';
+    negText.style.color = '#ff0000';
+    negText.style.fontSize = '16px';
+    negText.classList.add('text-on-canvas');
+
+    compassContainer.appendChild(posText);
+    compassContainer.appendChild(negText);
+}
+
+// Function to clean up added text areas after saving
+function removeTextFromCanvas() {
+    document.querySelectorAll('.text-on-canvas').forEach(el => el.remove());
+}
+
 // Export the compass area as an Image (PNG/JPG)
 document.getElementById('export-img-btn').addEventListener('click', function () {
-    const compassArea = document.getElementById('compass-area');
+    appendTextToCanvas();
 
-    html2canvas(compassArea).then(function (canvas) {
+    html2canvas(compassContainer).then(function (canvas) {
         // Convert the canvas to an image and download it
         const link = document.createElement('a');
         link.download = 'compass-image.png'; // Filename for the download
         link.href = canvas.toDataURL('image/png'); // Convert canvas to PNG format
         link.click(); // Trigger the download
+
+        removeTextFromCanvas(); // Clean up added text after saving
     });
 });
 
 // Export the compass area as a PDF
 document.getElementById('export-pdf-btn').addEventListener('click', function () {
-    const compassArea = document.getElementById('compass-area');
+    appendTextToCanvas();
 
-    html2canvas(compassArea).then(function (canvas) {
+    html2canvas(compassContainer).then(function (canvas) {
         // Initialize jsPDF
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF();
 
-        // Convert canvas to an image and add it to the PDF
         const imgData = canvas.toDataURL('image/png');
-        const imgWidth = 210; // A4 page width in mm (for landscape)
+        const imgWidth = 210; // A4 page width in mm
         const pageHeight = 297; // A4 page height in mm
         const imgHeight = canvas.height * imgWidth / canvas.width; // Calculate the image height proportionally
         
-        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight); // Add image to PDF
-        
-        // Save the generated PDF
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
         pdf.save('compass.pdf');
+
+        removeTextFromCanvas(); // Clean up added text after saving
     });
 });
 
@@ -118,4 +154,25 @@ document.getElementById('export-pdf-btn').addEventListener('click', function () 
 document.getElementById('image-selector').addEventListener('change', function() {
     const selectedImage = this.value;  // Get the selected image filename
     document.getElementById('dynamic-image').src = selectedImage;  // Update the image src
+});
+
+// Show modal with help text when a help icon is clicked
+helpIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        const helpMessage = this.getAttribute('data-help');
+        helpText.textContent = helpMessage;
+        helpModal.style.display = 'block';
+    });
+});
+
+// Close modal when the close button is clicked
+closeBtn.addEventListener('click', function() {
+    helpModal.style.display = 'none';
+});
+
+// Close modal when clicking outside of the modal content
+window.addEventListener('click', function(event) {
+    if (event.target === helpModal) {
+        helpModal.style.display = 'none';
+    }
 });
