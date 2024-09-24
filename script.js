@@ -12,21 +12,24 @@ const negativeAdjInput = document.getElementById('negative-adj');
 
 // Update size value text when slider is moved
 sizeSlider.addEventListener('input', function () {
-    sizeValue.textContent = sizeSlider.value;
+    sizeValue.textContent = sizeSlider.value;  // Update the label with the current slider value
 });
 
-// Update image based on dropdown selection
+// Update image based on dropdown selection (compass change)
 imageSelector.addEventListener('change', function () {
-    dynamicImage.src = this.value;
+    const selectedImage = this.value;
+    dynamicImage.src = selectedImage; // Update the dynamic image src attribute
+    console.log(`Image updated to: ${selectedImage}`); // Log the image change for debugging
 });
 
 // Handle image upload
 imageUpload.addEventListener('change', function(event) {
-    const file = event.target.files[0];
+    const file = event.target.files[0]; // Get the uploaded file
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            dynamicImage.src = e.target.result;
+            dynamicImage.src = e.target.result; // Set the new image source as base64
+            console.log('Uploaded image updated successfully'); // Log the success of the upload
         };
         reader.readAsDataURL(file); // Convert the uploaded file to Data URL
     }
