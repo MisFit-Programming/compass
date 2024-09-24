@@ -11,8 +11,8 @@
 <body>
     <section class="controls">
         <!-- Help Navigation -->
-        <label for="help-section-selector">Choose a Section:</label>
-        <select id="help-section-selector" aria-label="Select a help section">
+        <label for="help-section-selector" style="font-weight: bold;">Choose a Section:</label>
+        <select id="help-section-selector" aria-label="Select a help section" style="margin-bottom: 20px;">
             <option value="introduction" selected>Introduction</option>
             <option value="values">Values</option>
             <option value="emotional-needs">Emotional Needs</option>
@@ -27,107 +27,120 @@
         </select>
     </section>
 
-        <!-- Help Content Sections -->
-        <div id="help-content">
-            <section id="introduction" class="help-content-section">
-                <h2>Introduction</h2>
-                <p>The 6mx compass identifies personality facets necessary to influence behavior. It’s useful in sales, interrogations, and life-or-death situations. With practice, operators can intuitively read and guide behavior effectively in under six minutes.</p>
-            </section>
+    <!-- Help Content Sections -->
+    <div id="help-content" style="padding: 20px; max-width: 800px; margin: auto;">
+        <!-- Introduction Section -->
+        <section id="introduction" class="help-content-section">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Introduction</h2>
+            <p style="margin-bottom: 10px;">This compass was inspired by the work of former Navy Chief, Chase Hughes. It is difficult for intellectuals to get paid what their ideas are worth. Honor the community, buy Chase Hughes’ books:</p>
+            <ul style="margin-bottom: 20px;">
+                <li><strong>The Ellipsis Manual</strong></li>
+                <li><strong>Six Minute X-Ray</strong></li>
+                <li><strong>The Behavior Ops Manual</strong></li>
+            </ul>
+            <h3 style="font-size: 1.6em; margin-bottom: 10px;">Using the Compass</h3>
+            <p style="margin-bottom: 15px;">The 6mx compass identifies the personality facets needed to create behavioral results. It can be used in sales, interrogations, and life-or-death situations. The goal is to make this intuitive, allowing operators to create results through observation and response.</p>
+            <p style="margin-bottom: 20px;">A skilled practitioner can gather all the information in minutes—no more than six minutes should be required.</p>
+        </section>
 
-            <section id="values" class="help-content-section" style="display:none;">
-                <h2>Section 1: Values</h2>
-                <p>Values describe the 'why' behind people's behaviors:</p>
-                <ul>
-                    <li><strong>CONNECTION:</strong> Prioritizing relationships with others.</li>
-                    <li><strong>INFORMATION:</strong> Pursuing knowledge and data.</li>
-                    <li><strong>RECOGNITION:</strong> Seeking acknowledgment from others.</li>
-                    <li><strong>EXPERIENCE:</strong> Valuing life experiences.</li>
-                    <li><strong>FREEDOM:</strong> Valuing liberty and independence.</li>
-                    <li><strong>GROWTH:</strong> Seeing success as ongoing improvement.</li>
-                </ul>
-            </section>
+        <!-- Values Section -->
+        <section id="values" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 1: Values</h2>
+            <p style="margin-bottom: 10px;">On the 6mx compass, values describe the 'why' behind behaviors, motivating actions and decisions:</p>
+            <ul style="margin-bottom: 20px;">
+                <li><strong>CONNECTION:</strong> The most important thing is connections with others.</li>
+                <li><strong>INFORMATION:</strong> Data and knowledge are the keys to success.</li>
+                <li><strong>RECOGNITION:</strong> Success is being acknowledged by others.</li>
+                <li><strong>EXPERIENCE:</strong> Life is based on experiences.</li>
+                <li><strong>FREEDOM:</strong> Liberty and independence define success.</li>
+                <li><strong>GROWTH:</strong> Success is an ongoing process of growth.</li>
+            </ul>
+        </section>
 
-            <section id="emotional-needs" class="help-content-section" style="display:none;">
-                <h2>Section 2: Emotional Needs</h2>
-                <p>Emotional needs influence people’s behaviors. Primary needs include:</p>
-                <ul>
-                    <li><strong>SIGNIFICANCE:</strong> Desire to feel important and acknowledged.</li>
-                    <li><strong>APPROVAL/RECOGNITION:</strong> Seeking approval from others.</li>
-                    <li><strong>ACCEPTANCE:</strong> Needing to belong to a group.</li>
-                </ul>
-                <p>Secondary needs include:</p>
-                <ul>
-                    <li><strong>INTELLIGENCE:</strong> Wanting to be seen as smart.</li>
-                    <li><strong>PITY:</strong> Seeking sympathy for hardships.</li>
-                    <li><strong>STRENGTH/POWER:</strong> Seeking to appear strong and powerful.</li>
-                </ul>
-            </section>
+        <!-- Emotional Needs Section -->
+        <section id="emotional-needs" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 2: Emotional Needs</h2>
+            <p style="margin-bottom: 15px;">Emotional needs shape people's behaviors. Understanding these needs lets you influence them effectively.</p>
+            
+            <h3 style="font-size: 1.6em; margin-bottom: 10px;">Primary Needs</h3>
+            <ul style="margin-bottom: 15px;">
+                <li><strong>SIGNIFICANCE:</strong> Desire to feel important and acknowledged by others.</li>
+                <li><strong>APPROVAL/RECOGNITION:</strong> Seeking approval and compliments.</li>
+                <li><strong>ACCEPTANCE:</strong> Focus on belonging to a group.</li>
+            </ul>
 
-            <section id="decision-map" class="help-content-section" style="display:none;">
-                <h2>Section 3: The Decision Map</h2>
-                <p>The Decision Map explains decision-making strategies:</p>
-                <ul>
-                    <li><strong>DEVIANCE:</strong> Standing out and breaking social norms.</li>
-                    <li><strong>NOVELTY:</strong> Being an early adopter.</li>
-                    <li><strong>SOCIAL:</strong> Making decisions to connect with others.</li>
-                    <li><strong>CONFORMITY:</strong> Aligning with peer group behaviors.</li>
-                    <li><strong>INVESTMENT:</strong> Seeking valuable returns.</li>
-                    <li><strong>NECESSITY:</strong> Focusing on essential actions.</li>
-                </ul>
-            </section>
+            <h3 style="font-size: 1.6em; margin-bottom: 10px;">Secondary Needs</h3>
+            <ul>
+                <li><strong>INTELLIGENCE:</strong> Displaying intellectual prowess, avoiding being seen as uneducated.</li>
+                <li><strong>PITY:</strong> Seeking sympathy for hardships, wanting acknowledgment for struggles.</li>
+                <li><strong>STRENGTH/POWER:</strong> Displaying dominance and seeking validation through power.</li>
+            </ul>
+        </section>
 
-            <section id="representational-systems" class="help-content-section" style="display:none;">
-                <h2>Section 4: Representational Systems</h2>
-                <p>People process information using three main representational systems:</p>
-                <ul>
-                    <li><strong>VISUAL:</strong> Thinking in pictures.</li>
-                    <li><strong>AUDITORY:</strong> Thinking in sounds or words.</li>
-                    <li><strong>KINESTHETIC:</strong> Thinking in feelings or actions.</li>
-                </ul>
-            </section>
+        <!-- Decision Map Section -->
+        <section id="decision-map" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 3: The Decision Map</h2>
+            <p style="margin-bottom: 15px;">The 6mx compass maps decision-making strategies, allowing you to tailor how you present options:</p>
+            <ul>
+                <li><strong>DEVIANCE:</strong> Decisions are made to stand out or break norms.</li>
+                <li><strong>NOVELTY:</strong> Prioritizing cutting-edge, new experiences.</li>
+                <li><strong>SOCIAL:</strong> Decisions are made to connect with others.</li>
+                <li><strong>CONFORMITY:</strong> Aligning behaviors with peer expectations.</li>
+                <li><strong>INVESTMENT:</strong> Focusing on valuable returns from actions.</li>
+                <li><strong>NECESSITY:</strong> Making decisions based on practical needs.</li>
+            </ul>
+        </section>
 
-            <section id="pronouns" class="help-content-section" style="display:none;">
-                <h2>Section 5: Pronouns</h2>
-                <p>Pronouns indicate a person’s social focus:</p>
-                <ul>
-                    <li><strong>Self Pronouns:</strong> Focus on “I” or “me.”</li>
-                    <li><strong>Team Pronouns:</strong> Focus on “we” or “our.”</li>
-                    <li><strong>Other Pronouns:</strong> Focus on external groups, “they.”</li>
-                </ul>
-            </section>
+        <!-- Representational Systems Section -->
+        <section id="representational-systems" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 4: Representational Systems</h2>
+            <p style="margin-bottom: 15px;">People process information in different ways, which can be categorized as representational systems:</p>
+            <ul>
+                <li><strong>VISUAL:</strong> Thinking in images and pictures.</li>
+                <li><strong>AUDITORY:</strong> Processing information through sounds and words.</li>
+                <li><strong>KINESTHETIC:</strong> Thinking through feelings and actions.</li>
+            </ul>
+        </section>
 
-            <section id="adjectives" class="help-content-section" style="display:none;">
-                <h2>Section 6: Adjectives</h2>
-                <p>Adjectives reveal internal processes. Positive adjectives help build rapport, while negative adjectives indicate behaviors to avoid for better communication.</p>
-            </section>
+        <!-- Pronouns Section -->
+        <section id="pronouns" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 5: Pronouns</h2>
+            <p style="margin-bottom: 15px;">Pronouns reflect a person's social focus. Pay attention to how they use "I," "we," or "they" to understand their perspective.</p>
+            <ul>
+                <li><strong>Self Pronouns:</strong> Focus on "I" or "me".</li>
+                <li><strong>Team Pronouns:</strong> Focus on "we" or "us".</li>
+                <li><strong>Other Pronouns:</strong> Focus on external groups ("they").</li>
+            </ul>
+        </section>
 
-            <section id="gestural-hemispheric-tendency" class="help-content-section" style="display:none;">
-                <h2>Section 7: Gestural Hemispheric Tendency</h2>
-                <p>Gestural Hemispheric Tendency (GHT) identifies which side a person gestures to when discussing positive or negative topics. Knowing this helps guide communication.</p>
-            </section>
+        <!-- Other Sections -->
+        <section id="adjectives" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 6: Adjectives</h2>
+            <p>Adjectives reveal internal processes, and by identifying the adjectives someone uses, you can better understand their thought patterns.</p>
+        </section>
 
-            <section id="locus-of-control" class="help-content-section" style="display:none;">
-                <h2>Section 8: Locus of Control</h2>
-                <p>Locus of Control reflects whether someone feels in control of their life:</p>
-                <ul>
-                    <li><strong>Internal:</strong> Belief that they control their life.</li>
-                    <li><strong>External:</strong> Belief that external factors control their life.</li>
-                </ul>
-            </section>
+        <section id="gestural-hemispheric-tendency" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 7: Gestural Hemispheric Tendency</h2>
+            <p>GHT identifies which side a person gestures to when discussing positive or negative topics, helping you guide communication effectively.</p>
+        </section>
 
-            <section id="handedness" class="help-content-section" style="display:none;">
-                <h2>Section 9: Handedness</h2>
-                <p>Handedness (right or left) reflects brain hemisphere dominance and can indicate a person's decision-making style.</p>
-            </section>
+        <section id="locus-of-control" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 8: Locus of Control</h2>
+            <p>Locus of Control reflects whether someone believes they control their life (internal) or if external factors have more influence (external).</p>
+        </section>
 
-            <section id="affective-mapping" class="help-content-section" style="display:none;">
-                <h2>Section 10: Affective Mapping</h2>
-                <p>Affective Mapping identifies emotional responses in behaviors such as lip compression, eyebrow flashes, or breathing patterns, which indicate withheld opinions or uncertainty.</p>
-            </section>
-        </div>
-    </section>
+        <section id="handedness" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 9: Handedness</h2>
+            <p>Handedness reflects brain hemisphere dominance and can indicate how a person makes decisions.</p>
+        </section>
 
-<!-- Help Content Script -->
+        <section id="affective-mapping" class="help-content-section" style="display:none;">
+            <h2 style="font-size: 1.8em; margin-bottom: 15px;">Section 10: Affective Mapping</h2>
+            <p>Affective Mapping identifies emotional responses through behaviors like eyebrow flashes, lip compression, and breathing patterns.</p>
+        </section>
+    </div>
+
+    <!-- Help Content Script -->
     <script>
         document.getElementById('help-section-selector').addEventListener('change', function () {
             const selectedSection = this.value;
