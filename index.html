@@ -12,9 +12,12 @@
         <label for="image-selector">Choose an Image:</label>
         <select id="image-selector" aria-label="Select an image to display on the compass">
             <option value="Charisma Compass.png" selected>Charisma Compass</option>
-            <option value="Compass.png">Compass</option>
             <option value="Fenrir.png">Fenrir</option>
         </select>
+
+        <!-- Upload Image -->
+        <label for="image-upload">Or Upload an Image:</label>
+        <input type="file" id="image-upload" accept="image/*" aria-label="Upload a custom image" />
 
         <!-- Shape Selector -->
         <label for="shape-selector">Choose a Shape:</label>
@@ -51,7 +54,7 @@
 
     <!-- Compass Image -->
     <section id="compass-area" class="compass-container">
-        <img id="dynamic-image" src="Compass.png" alt="Dynamic Image" class="compass-image" aria-label="Main compass image">
+        <img id="dynamic-image" src="Charisma Compass.png" alt="Dynamic Image" class="compass-image" aria-label="Main compass image">
     </section>
 
     <!-- Text Input for Positive and Negative Adj -->
@@ -66,6 +69,69 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        const imageSelector = document.getElementById('image-selector');
+        const imageUpload = document.getElementById('image-upload');
+        const dynamicImage = document.getElementById('dynamic-image');
+        const compassArea = document.getElementById('compass-area');
+
+        // Update image based on dropdown selection
+        imageSelector.addEventListener('change', function () {
+            dynamicImage.src = this.value;
+        });
+
+        // Handle image upload
+        imageUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    dynamicImage.src = e.target.result; // Set the new image source
+                };
+                reader.readAsDataURL(file); // Convert the uploaded file to Data URL
+            }
+        });
+
+        // Click-to-Mark Functionality
+        compassArea.addEventListener('click', function(event) {
+            if (event.target !== compassArea && event.target !== dynamicImage) return; // Only place shapes on empty areas
+
+            const selectedShape = document.getElementById('shape-selector').value;
+            const selectedColor = document.getElementById('color-picker').value;
+            const selectedSize = document.getElementById('size-slider').value;
+
+            // Create the shape element
+            const shapeElement = document.createElement('div');
+            shapeElement.classList.add('shape', selectedShape);
+
+            // Set position and styles
+            const rect = compassArea.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            shapeElement.style.left = `${x}px`;
+            shapeElement.style.top = `${y}px`;
+            shapeElement.style.width = `${selectedSize}px`;
+            shapeElement.style.height = `${selectedSize}px`;
+            shapeElement.style.backgroundColor = selectedColor;
+
+            // Specific adjustments for different shapes
+            if (selectedShape === 'check') {
+                shapeElement.textContent = '✔';
+                shapeElement.style.fontSize = `${selectedSize}px`;
+                shapeElement.style.color = selectedColor;
+                shapeElement.style.backgroundColor = 'transparent';
+            } else if (selectedShape === 'plus') {
+                shapeElement.textContent = '+';
+                shapeElement.style.fontSize = `${selectedSize}px`;
+                shapeElement.style.color = selectedColor;
+                shapeElement.style.backgroundColor = 'transparent';
+            }
+
+            // Append the shape to the compass area
+            compassArea.appendChild(shapeElement);
+        });
+
+    </script>
 </body>
 </html>
