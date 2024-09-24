@@ -85,19 +85,37 @@ input, select, textarea {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: var(--white);
 }
 
+/* Circle Shape */
 .circle {
     background-color: var(--red);
     border-radius: 50%;
     border: 2px solid var(--white);
+    width: auto;
+    height: auto;
 }
 
+/* Plus and Check Marks */
 .plus, .check {
     background-color: transparent;
     color: var(--red);
     font-size: 24px;
+    width: auto; /* No fixed width */
+    height: auto; /* No fixed height */
+    padding: 0;
+    border: none; /* No border */
+}
+
+/* Text-based Shapes (vr, vc, ar, etc.) */
+.vr, .vc, .ar, .ac, .kr, .kc, .ad {
+    background-color: transparent; /* No background */
+    padding: 0; /* Remove padding */
+    border: none; /* No border */
+    color: var(--red); /* Default color for text shapes */
+    font-size: inherit; /* Font size will be set dynamically by JS */
+    width: auto; /* No fixed width */
+    height: auto; /* No fixed height */
 }
 
 /* Text Inputs Section */
