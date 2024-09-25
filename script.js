@@ -12,7 +12,7 @@ const negativeAdjInput = document.getElementById('negative-adj');
 
 // Update size value text when slider is moved
 sizeSlider.addEventListener('input', function () {
-    sizeValue.textContent = sizeSlider.value;  // Update the label with the current slider value
+    sizeValue.textContent = sizeSlider.value;
 });
 
 // Update image based on dropdown selection (compass change)
@@ -23,7 +23,7 @@ imageSelector.addEventListener('change', function () {
 
 // Handle image upload
 imageUpload.addEventListener('change', function(event) {
-    const file = event.target.files[0]; // Get the uploaded file
+    const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -87,30 +87,36 @@ compassContainer.addEventListener('click', function (e) {
     createShape(x, y, selectedShape, selectedColor, selectedSize, positiveAdj, negativeAdj);
 });
 
-// Helper function to append text areas to the compass before export
-function appendTextToCompass() {
+// Helper function to append text areas to the bottom of the compass container
+function appendTextToBottom() {
+    const containerWidth = compassContainer.offsetWidth;
+
     const posText = document.createElement('div');
     posText.textContent = `Positive Adj: ${positiveAdjInput.value}`;
-    posText.style.position = 'absolute';
-    posText.style.bottom = '10px'; // Position it at the bottom of the canvas
-    posText.style.left = '10px';
-    posText.style.color = '#ff0000'; // Red text to match the theme
+    posText.style.width = `${containerWidth}px`;
+    posText.style.textAlign = 'left';
+    posText.style.padding = '10px';
+    posText.style.color = '#ff0000';
     posText.style.fontSize = '16px';
-    posText.style.zIndex = '10';  // Ensure the text is on top of everything
-    posText.classList.add('text-on-canvas'); // Add a class to remove it later
+    posText.classList.add('text-on-canvas');
 
     const negText = document.createElement('div');
     negText.textContent = `Negative Adj: ${negativeAdjInput.value}`;
-    negText.style.position = 'absolute';
-    negText.style.bottom = '30px'; // Position it slightly above Positive Adj
-    negText.style.left = '10px';
+    negText.style.width = `${containerWidth}px`;
+    negText.style.textAlign = 'left';
+    negText.style.padding = '10px';
     negText.style.color = '#ff0000';
     negText.style.fontSize = '16px';
-    negText.style.zIndex = '10';  // Ensure the text is on top of everything
     negText.classList.add('text-on-canvas');
 
-    compassContainer.appendChild(posText);
-    compassContainer.appendChild(negText);
+    const textContainer = document.createElement('div');
+    textContainer.style.width = '100%';
+    textContainer.style.marginTop = '10px';
+    textContainer.style.borderTop = '2px solid #ff0000';  // Add a border to separate the text
+    textContainer.appendChild(posText);
+    textContainer.appendChild(negText);
+
+    compassContainer.appendChild(textContainer);
 }
 
 // Helper function to remove the appended text after export
@@ -120,7 +126,7 @@ function removeTextFromCompass() {
 
 // Save the layout as an image (PNG)
 document.getElementById('export-img-btn').addEventListener('click', function() {
-    appendTextToCompass();  // Add text to the canvas
+    appendTextToBottom();  // Add text to the bottom of the canvas
 
     html2canvas(compassContainer, { useCORS: true, scale: 2 }).then(canvas => {
         const link = document.createElement('a');
@@ -134,7 +140,7 @@ document.getElementById('export-img-btn').addEventListener('click', function() {
 
 // Save the layout as a PDF
 document.getElementById('export-pdf-btn').addEventListener('click', function() {
-    appendTextToCompass();  // Add text to the canvas
+    appendTextToBottom();  // Add text to the bottom of the canvas
 
     html2canvas(compassContainer, { useCORS: true, scale: 2 }).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
