@@ -34,6 +34,41 @@ input, select, textarea {
     border-radius: 4px;
     padding: 5px;
     font-size: 14px;
+    margin-bottom: 10px; /* Ensure spacing between inputs */
+}
+
+/* Collapsible Sections */
+details {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--dark-gray);
+    width: 100%;
+    max-width: 600px;
+}
+
+summary {
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+details[open] summary {
+    background-color: #e0e0e0;
+    color: var(--black);
+}
+
+details[open] summary:hover {
+    background-color: #d0d0d0;
+}
+
+details summary:focus {
+    outline: none;
 }
 
 /* Controls Section */
@@ -41,7 +76,6 @@ input, select, textarea {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 20px;
     align-items: center;
     justify-content: center;
     background-color: var(--dark-gray);
@@ -92,30 +126,26 @@ input, select, textarea {
     background-color: var(--red);
     border-radius: 50%;
     border: 2px solid var(--white);
-    width: auto;
-    height: auto;
 }
 
-/* Plus and Check Marks */
-.plus, .check {
+/* Plus, Minus, Equal, and Check Marks */
+.plus, .check, .minus, .equal {
     background-color: transparent;
     color: var(--red);
     font-size: 24px;
-    width: auto; /* No fixed width */
-    height: auto; /* No fixed height */
+    width: auto;
+    height: auto;
     padding: 0;
-    border: none; /* No border */
+    border: none;
 }
 
 /* Text-based Shapes (vr, vc, ar, etc.) */
 .vr, .vc, .ar, .ac, .kr, .kc, .ad {
-    background-color: transparent; /* No background */
-    padding: 0; /* Remove padding */
-    border: none; /* No border */
-    color: var(--red); /* Default color for text shapes */
-    font-size: inherit; /* Font size will be set dynamically by JS */
-    width: auto; /* No fixed width */
-    height: auto; /* No fixed height */
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    color: var(--red);
+    font-size: inherit;
 }
 
 /* Text Inputs Section */
@@ -153,74 +183,11 @@ button {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    margin: 10px;
+    margin: 10px 0; /* Spacing between buttons */
 }
 
 button:hover {
     background-color: var(--dark-red);
-}
-
-/* Help Icon */
-.help-icon {
-    display: inline-block;
-    background-color: var(--red);
-    color: var(--black);
-    border: 1px solid var(--dark-red);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    margin-left: 5px;
-}
-
-/* Modal Styles */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-}
-
-/* Dynamic Help Modal Content */
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--white);
-    padding: 30px; /* More padding for desktop */
-    border-radius: 10px;
-    width: 400px; /* Larger width for desktop */
-    max-width: 90%; /* Ensure it adapts to smaller screens */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: left; /* Align text to the left for readability */
-    color: var(--black);
-    font-size: 18px; /* Larger text for better readability on desktop */
-    line-height: 1.6; /* Better line spacing for readability */
-    white-space: pre-wrap; /* Respect line breaks and carriage returns */
-}
-
-/* Close Button */
-.close-btn {
-    color: var(--dark-gray);
-    float: right;
-    font-size: 26px; /* Larger close button on desktop */
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 15px; /* Space between the close button and the text */
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: var(--black);
-    text-decoration: none;
 }
 
 /* Mobile Adjustments */
@@ -240,15 +207,14 @@ button:hover {
         width: 100%;
     }
 
-    /* Mobile Help Modal Adjustments */
     .modal-content {
-        width: 85%; /* Make the modal width smaller on mobile */
-        font-size: 16px; /* Slightly reduce font size */
-        padding: 20px; /* Reduce padding for smaller screens */
-        line-height: 1.5; /* Adjust line spacing for readability */
+        width: 85%;
+        font-size: 16px;
+        padding: 20px;
+        line-height: 1.5;
     }
 
     .close-btn {
-        font-size: 22px; /* Slightly smaller close button on mobile */
+        font-size: 22px;
     }
 }
