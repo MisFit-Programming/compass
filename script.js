@@ -9,6 +9,7 @@ const sizeSlider = document.getElementById('size-slider');
 const sizeValue = document.getElementById('size-value');
 const positiveAdjInput = document.getElementById('positive-adj');
 const negativeAdjInput = document.getElementById('negative-adj');
+const notesBtoeInput = document.getElementById('notes-btoe'); // New Notes/BToE Input
 
 // Update size value text when slider is moved
 sizeSlider.addEventListener('input', function () {
@@ -23,7 +24,7 @@ imageSelector.addEventListener('change', function () {
 
 // Handle image upload
 imageUpload.addEventListener('change', function(event) {
-    const file = event.target.files[0]; // Get the uploaded file
+    const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -91,6 +92,7 @@ compassContainer.addEventListener('click', function (e) {
 function appendTextToBottom() {
     const containerWidth = compassContainer.offsetWidth;
 
+    // Append Positive Adj
     const posText = document.createElement('div');
     posText.textContent = `Positive Adj:\n${positiveAdjInput.value}`;
     posText.style.width = `${containerWidth}px`;
@@ -101,6 +103,7 @@ function appendTextToBottom() {
     posText.style.whiteSpace = 'pre-wrap'; // Handle new lines and white spaces correctly
     posText.classList.add('text-on-canvas');
 
+    // Append Negative Adj
     const negText = document.createElement('div');
     negText.textContent = `Negative Adj:\n${negativeAdjInput.value}`;
     negText.style.width = `${containerWidth}px`;
@@ -111,12 +114,24 @@ function appendTextToBottom() {
     negText.style.whiteSpace = 'pre-wrap'; // Handle new lines and white spaces correctly
     negText.classList.add('text-on-canvas');
 
+    // Append Notes / BToE
+    const notesText = document.createElement('div'); // New Notes/BToE text
+    notesText.textContent = `Notes / BToE:\n${notesBtoeInput.value}`;
+    notesText.style.width = `${containerWidth}px`;
+    notesText.style.textAlign = 'left';
+    notesText.style.padding = '10px';
+    notesText.style.color = '#ff0000';
+    notesText.style.fontSize = '16px';
+    notesText.style.whiteSpace = 'pre-wrap'; // Handle new lines and white spaces correctly
+    notesText.classList.add('text-on-canvas');
+
     const textContainer = document.createElement('div');
     textContainer.style.width = '100%';
     textContainer.style.marginTop = '10px';
     textContainer.style.borderTop = '2px solid #ff0000';  // Add a border to separate the text
     textContainer.appendChild(posText);
     textContainer.appendChild(negText);
+    textContainer.appendChild(notesText);  // Add the Notes/BToE to the text container
 
     compassContainer.appendChild(textContainer);
 }
