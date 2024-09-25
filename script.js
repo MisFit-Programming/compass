@@ -23,7 +23,7 @@ imageSelector.addEventListener('change', function () {
 
 // Handle image upload
 imageUpload.addEventListener('change', function(event) {
-    const file = event.target.files[0];
+    const file = event.target.files[0]; // Get the uploaded file
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -92,21 +92,23 @@ function appendTextToBottom() {
     const containerWidth = compassContainer.offsetWidth;
 
     const posText = document.createElement('div');
-    posText.textContent = `Positive Adj: ${positiveAdjInput.value}`;
+    posText.textContent = `Positive Adj:\n${positiveAdjInput.value}`;
     posText.style.width = `${containerWidth}px`;
     posText.style.textAlign = 'left';
     posText.style.padding = '10px';
     posText.style.color = '#ff0000';
     posText.style.fontSize = '16px';
+    posText.style.whiteSpace = 'pre-wrap'; // Handle new lines and white spaces correctly
     posText.classList.add('text-on-canvas');
 
     const negText = document.createElement('div');
-    negText.textContent = `Negative Adj: ${negativeAdjInput.value}`;
+    negText.textContent = `Negative Adj:\n${negativeAdjInput.value}`;
     negText.style.width = `${containerWidth}px`;
     negText.style.textAlign = 'left';
     negText.style.padding = '10px';
     negText.style.color = '#ff0000';
     negText.style.fontSize = '16px';
+    negText.style.whiteSpace = 'pre-wrap'; // Handle new lines and white spaces correctly
     negText.classList.add('text-on-canvas');
 
     const textContainer = document.createElement('div');
