@@ -90,16 +90,18 @@ details summary:focus {
 
 /* Compass Container */
 .compass-container {
-    position: relative;
+    position: relative; /* This is important so that the canvas aligns relative to the container */
     display: inline-block;
-    width: 100%;
+    width: 100%; /* Ensure it scales with the content */
     max-width: 600px;
     background-color: var(--black);
     padding: 10px;
     border: 2px solid var(--red);
     border-radius: 8px;
+    text-align: center; /* Center align image inside the container */
 }
 
+/* Compass Image */
 .compass-image {
     width: 100%;
     height: auto;
@@ -107,7 +109,19 @@ details summary:focus {
     pointer-events: none;
     position: relative;
     z-index: 1;
+    /* Add this to avoid sub-pixel issues */
+    height: calc(100% - (100% % 1));  /* This will effectively round the height */
 }
+
+/* Highlighter Canvas */
+canvas {
+    pointer-events: none; /* Disable interaction with the canvas */
+    position: absolute; /* Position it on top of the image */
+    top: 0;
+    left: 0;
+    z-index: 10; /* Ensure it's above the compass image */
+}
+
 
 /* Shapes */
 .shape {
@@ -173,6 +187,13 @@ details summary:focus {
     border-radius: 4px;
     resize: none;
 }
+
+/* Make sure the image isn't selectable */
+img {
+    user-select: none;
+    pointer-events: none; /* Prevent interaction with the image */
+}
+
 
 /* Button Styles */
 button {
