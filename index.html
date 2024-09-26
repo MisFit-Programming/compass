@@ -49,6 +49,20 @@
         <span id="size-value">20</span>px
     </details>
 
+          <details>
+        <summary>Highlighter</summary>
+        <!-- Add this to your controls section in HTML -->
+    <label for="highlighter-toggle">Highlighter Mode:</label>
+    <input type="checkbox" id="highlighter-toggle" aria-label="Toggle highlighter mode">
+
+    <!-- Add color and size controls -->
+    <label for="highlighter-color">Highlighter Color:</label>
+    <input type="color" id="highlighter-color" value="#ffff00" aria-label="Pick a highlighter color">
+
+    <label for="highlighter-size">Highlighter Opacity:</label>
+    <input type="range" id="highlighter-size" min="0.01" max="1" step="0.01" value="0.025" aria-label="Adjust highlighter opacity">
+</details>
+
     <details>
         <summary>Erase</summary>
         <button id="erase-btn" aria-label="Erase shapes">Erase</button><br><br>
@@ -61,6 +75,8 @@
         <button id="export-pdf-btn" aria-label="Save the current layout as a PDF">Save as PDF</button><br><br>
         <button id="help-btn" onclick="window.open('help.html', '_blank')" aria-label="Open help page in new tab">Help</button>
     </details>
+
+
 </section>
 
 <!-- Compass Image -->
