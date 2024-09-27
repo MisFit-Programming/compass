@@ -45,47 +45,47 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Update image based on dropdown selection (compass change)
-imageSelector.addEventListener('change', function () {
-    const selectedImage = this.value;
-    dynamicImage.src = selectedImage; // Update the dynamic image src attribute
-    
-    // Ensure the canvas is resized and aligned after the image is switched
-    dynamicImage.onload = function() {
-        resizeCanvas(); // Resize the canvas once the image has loaded
-    };
-});
-
-// Handle image upload
-imageUpload.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            dynamicImage.src = e.target.result; // Set the new image source as base64
-            
-            // Ensure the canvas is resized and aligned after the uploaded image is loaded
-            dynamicImage.onload = function() {
-                resizeCanvas(); // Resize the canvas once the image has loaded
-            };
+    imageSelector.addEventListener('change', function () {
+        const selectedImage = this.value;
+        dynamicImage.src = selectedImage; // Update the dynamic image src attribute
+        
+        // Ensure the canvas is resized and aligned after the image is switched
+        dynamicImage.onload = function() {
+            resizeCanvas(); // Resize the canvas once the image has loaded
         };
-        reader.readAsDataURL(file); // Convert the uploaded file to Data URL
+    });
+
+    // Handle image upload
+    imageUpload.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                dynamicImage.src = e.target.result; // Set the new image source as base64
+                
+                // Ensure the canvas is resized and aligned after the uploaded image is loaded
+                dynamicImage.onload = function() {
+                    resizeCanvas(); // Resize the canvas once the image has loaded
+                };
+            };
+            reader.readAsDataURL(file); // Convert the uploaded file to Data URL
+        }
+    });
+
+    // Adjust canvas size and position to match the image size
+    function resizeCanvas() {
+        const rect = dynamicImage.getBoundingClientRect(); // Get the dimensions of the image
+        
+        // Set the canvas to match the image size exactly
+        highlighterCanvas.width = rect.width;
+        highlighterCanvas.height = Math.floor(rect.height); // Ensure consistent height
+
+        highlighterCanvas.style.left = `${rect.left}px`;
+        highlighterCanvas.style.top = `${rect.top}px`;
+        
+        console.log('Canvas size:', highlighterCanvas.width, highlighterCanvas.height);
+        console.log('Image size:', rect.width, Math.floor(rect.height));
     }
-});
-
-// Adjust canvas size and position to match the image size
-function resizeCanvas() {
-    const rect = dynamicImage.getBoundingClientRect(); // Get the dimensions of the image
-    
-    // Set the canvas to match the image size exactly
-    highlighterCanvas.width = rect.width;
-    highlighterCanvas.height = Math.floor(rect.height); // Ensure consistent height
-
-    highlighterCanvas.style.left = '0';
-    highlighterCanvas.style.top = '0';
-    
-    console.log('Canvas size:', highlighterCanvas.width, highlighterCanvas.height);
-    console.log('Image size:', rect.width, Math.floor(rect.height));
-}
 
     window.addEventListener('resize', resizeCanvas); // Adjust canvas on window resize
     dynamicImage.onload = resizeCanvas; // Adjust canvas after image loads
@@ -108,7 +108,6 @@ function resizeCanvas() {
         ctx.beginPath();
         ctx.moveTo(x, y);
 
-
         function draw(e) {
             if (!isDrawing) return;
             x = e.clientX - rect.left;
@@ -124,6 +123,37 @@ function resizeCanvas() {
             highlighterCanvas.removeEventListener('mousemove', draw);
             document.removeEventListener('mouseup', stopDrawing);
         });
+    });
+
+    // Mobile support for highlighter
+    highlighterCanvas.addEventListener('touchstart', function (e) {
+        if (!isHighlighting) return;
+        const touch = e.touches[0];
+        const rect = highlighterCanvas.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        isDrawing = true;
+
+        highlighterCanvas.addEventListener('touchmove', drawTouch);
+        document.addEventListener('touchend', stopTouchDrawing);
+
+        function drawTouch(event) {
+            if (!isDrawing) return;
+            const touchMove = event.touches[0];
+            const xMove = touchMove.clientX - rect.left;
+            const yMove = touchMove.clientY - rect.top;
+            ctx.lineTo(xMove, yMove);
+            ctx.stroke();
+        }
+
+        function stopTouchDrawing() {
+            isDrawing = false;
+            highlighterCanvas.removeEventListener('touchmove', drawTouch);
+            document.removeEventListener('touchend', stopTouchDrawing);
+        }
     });
 
     // Shape creation function
